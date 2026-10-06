@@ -13,10 +13,10 @@ export default function FavoritesList({ stores }: { stores: Store[] }) {
     return (
       <div
         data-testid="favorites-empty"
-        className="rounded-2xl border border-dashed border-slate-300 bg-white p-10 text-center text-slate-500"
+        className="rounded-2xl border border-dashed border-slate-300 bg-white p-10 text-center text-slate-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400"
       >
         <p>You haven&apos;t favorited any stores yet.</p>
-        <Link href="/stores" className="mt-3 inline-block font-semibold text-raku-600">
+        <Link href="/stores" className="mt-3 inline-block font-semibold text-raku-600 dark:text-rose-300">
           Browse stores
         </Link>
       </div>

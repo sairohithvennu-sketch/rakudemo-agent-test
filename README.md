@@ -9,6 +9,7 @@ RakuDemo is a cashback shopping web app. Members browse partner stores, activate
 - **Shopping Trips** (`/trips`): mock purchase history with amount, date, store, and cashback status (pending, confirmed, paid, declined).
 - **Favorites** (`/favorites`): favorite or unfavorite any store; selections persist in `localStorage`.
 - **Account** (`/account`): mock profile, available cashback balance, shopping statistics, and currently active offers.
+- **Dark mode**: a header control switches the whole site, including the 404 page, between light and dark. The choice is stored in `localStorage` under `rakudemo:theme` and is not taken from the operating system.
 
 ## Getting started
 
@@ -54,6 +55,7 @@ Cashback on a purchase is `amount × rate`, rounded to the nearest cent (`lib/ca
 
 - **Search** (`lib/search.ts`): the home page and `/stores` search box filters stores as you type. Matching is case-insensitive and trims whitespace; it checks the store name, category, and a list of search terms per store. The category chips combine with the search text.
 - **Favorites** (`lib/favorites.ts`, `lib/hooks.ts`): the heart button toggles a store id in `localStorage` under `rakudemo:favorites`. The header badge, store cards, and the Favorites page all read the same store.
+- **Theme** (`lib/theme.ts`, `lib/hooks.ts`): the header toggle writes `"light"` or `"dark"` (JSON, same as the other keys) to `rakudemo:theme`. A script in the document head applies that class before paint, so a reload does not flash the other theme. Missing or invalid storage stays light.
 
 ## Testing
 

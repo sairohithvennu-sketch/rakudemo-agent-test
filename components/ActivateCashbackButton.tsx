@@ -33,7 +33,7 @@ export default function ActivateCashbackButton({ store }: Props) {
         <div
           role="status"
           data-testid="activation-confirmation"
-          className="rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-900"
+          className="rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-900 dark:border-emerald-800 dark:bg-emerald-950 dark:text-emerald-100"
         >
           <p className="font-semibold">Cashback activated!</p>
           <p className="mt-1">
@@ -44,7 +44,7 @@ export default function ActivateCashbackButton({ store }: Props) {
             href={store.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-2 inline-block font-semibold text-emerald-800 underline"
+            className="mt-2 inline-block font-semibold text-emerald-800 underline dark:text-emerald-200"
           >
             Continue to {store.name}
           </a>
