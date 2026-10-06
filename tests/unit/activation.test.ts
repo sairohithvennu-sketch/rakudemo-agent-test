@@ -23,7 +23,7 @@ describe("createActivation", () => {
   });
 
   it("succeeds for the other launch stores", () => {
-    for (const id of ["adidas", "walmart", "best-buy", "macys"]) {
+    for (const id of ["nike", "adidas", "walmart", "best-buy", "macys"]) {
       expect(createActivation(getStoreById(id)!, now).ok).toBe(true);
     }
   });
