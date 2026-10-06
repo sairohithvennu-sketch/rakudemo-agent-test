@@ -104,7 +104,7 @@ export const stores: Store[] = [
     tagline: "Tech, appliances, and expert help",
     description:
       "Laptops, TVs, gaming, smart home, and major appliances from leading brands. Cashback applies to most products; select Apple items are excluded.",
-    logo: "/logos/bestbuy.svg",
+    logo: "/logos/best-buy.svg",
     brandColor: "#1e3a8a",
     url: "https://www.bestbuy.com",
     featured: true,
