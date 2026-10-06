@@ -21,7 +21,7 @@ export default function StoreBrowser({ stores }: Props) {
   return (
     <section aria-labelledby="browse-heading" className="space-y-5">
       <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-        <h2 id="browse-heading" className="text-2xl font-bold text-slate-900">
+        <h2 id="browse-heading" className="text-2xl font-bold text-slate-900 dark:text-slate-100">
           Browse stores
         </h2>
         <div className="relative w-full md:max-w-md">
@@ -35,7 +35,7 @@ export default function StoreBrowser({ stores }: Props) {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search stores, e.g. Nike, electronics"
-            className="w-full rounded-full border border-slate-200 bg-white px-5 py-3 text-sm shadow-sm outline-none focus:border-raku-500 focus:ring-2 focus:ring-raku-100"
+            className="w-full rounded-full border border-slate-200 bg-white px-5 py-3 text-sm text-slate-800 shadow-sm outline-none placeholder:text-slate-400 focus:border-raku-500 focus:ring-2 focus:ring-raku-100 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus:border-rose-400 dark:focus:ring-raku-700/40"
           />
         </div>
       </div>
@@ -51,7 +51,7 @@ export default function StoreBrowser({ stores }: Props) {
             className={`rounded-full px-4 py-1.5 text-sm font-medium transition ${
               category === c
                 ? "bg-raku-600 text-white"
-                : "bg-white text-slate-600 ring-1 ring-slate-200 hover:ring-raku-500"
+                : "bg-white text-slate-600 ring-1 ring-slate-200 hover:ring-raku-500 dark:bg-slate-900 dark:text-slate-300 dark:ring-slate-700"
             }`}
           >
             {c}
@@ -59,7 +59,7 @@ export default function StoreBrowser({ stores }: Props) {
         ))}
       </div>
 
-      <p className="text-sm text-slate-500" data-testid="results-count" aria-live="polite">
+      <p className="text-sm text-slate-500 dark:text-slate-400" data-testid="results-count" aria-live="polite">
         {results.length} {results.length === 1 ? "store" : "stores"}
       </p>
 
@@ -75,7 +75,7 @@ export default function StoreBrowser({ stores }: Props) {
       ) : (
         <div
           data-testid="no-results"
-          className="rounded-2xl border border-dashed border-slate-300 bg-white p-10 text-center text-slate-500"
+          className="rounded-2xl border border-dashed border-slate-300 bg-white p-10 text-center text-slate-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400"
         >
           No stores match your search. Try a different name or category.
         </div>

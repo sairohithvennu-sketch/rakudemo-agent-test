@@ -14,8 +14,8 @@ export default function TripsPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-extrabold text-slate-900">Shopping trips</h1>
-        <p className="text-slate-500">Your recent purchases and their cashback status.</p>
+        <h1 className="text-3xl font-extrabold text-slate-900 dark:text-slate-100">Shopping trips</h1>
+        <p className="text-slate-500 dark:text-slate-400">Your recent purchases and their cashback status.</p>
       </div>
       <div className="grid gap-4 sm:grid-cols-3">
         <StatCard label="Pending" value={formatCurrency(stats.pendingCashback)} hint="Awaiting merchant confirmation" />

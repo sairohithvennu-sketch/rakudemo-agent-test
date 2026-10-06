@@ -41,10 +41,10 @@ export default function HomePage() {
 
       <section aria-labelledby="featured-heading" className="space-y-4">
         <div className="flex items-end justify-between">
-          <h2 id="featured-heading" className="text-2xl font-bold text-slate-900">
+          <h2 id="featured-heading" className="text-2xl font-bold text-slate-900 dark:text-slate-100">
             Featured cashback deals
           </h2>
-          <Link href="/stores" className="text-sm font-semibold text-raku-600">
+          <Link href="/stores" className="text-sm font-semibold text-raku-600 dark:text-rose-300">
             See all
           </Link>
         </div>
@@ -58,7 +58,7 @@ export default function HomePage() {
       <StoreBrowser stores={stores} />
 
       <section aria-labelledby="how-heading" className="space-y-4">
-        <h2 id="how-heading" className="text-2xl font-bold text-slate-900">
+        <h2 id="how-heading" className="text-2xl font-bold text-slate-900 dark:text-slate-100">
           How it works
         </h2>
         <ol className="grid gap-4 md:grid-cols-3">
@@ -67,9 +67,9 @@ export default function HomePage() {
             ["2. Shop", "Complete your purchase as usual within 24 hours."],
             ["3. Earn", "Cashback shows up as pending, then confirmed, then paid."],
           ].map(([title, body]) => (
-            <li key={title} className="rounded-2xl bg-white p-5 shadow-card ring-1 ring-slate-100">
-              <p className="font-bold text-raku-600">{title}</p>
-              <p className="mt-1 text-sm text-slate-600">{body}</p>
+            <li key={title} className="rounded-2xl bg-white p-5 shadow-card ring-1 ring-slate-100 dark:bg-slate-900 dark:ring-slate-800">
+              <p className="font-bold text-raku-600 dark:text-rose-300">{title}</p>
+              <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">{body}</p>
             </li>
           ))}
         </ol>

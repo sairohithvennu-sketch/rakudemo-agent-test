@@ -79,3 +79,14 @@ Applies to Nike, Adidas, Target, Walmart, Best Buy, and Macy's (and the other st
 | --- | --- | --- |
 | NV-1 | Header links | Home, Stores, Shopping Trips, Favorites, Account each load their page; current page is highlighted |
 | NV-2 | Responsive | Layout remains usable at 375px, 768px, and 1280px widths |
+
+## Dark mode
+
+The header theme control is manual only. It does not follow the operating system or `prefers-color-scheme`. The choice is stored as JSON `"light"` or `"dark"` in `localStorage` under `rakudemo:theme` (same encoding as `rakudemo:favorites` and `rakudemo:activations`).
+
+| ID | Scenario | Expected |
+| --- | --- | --- |
+| DM-1 | Click the header theme toggle | The site switches between light and dark. The control's label and pressed state match the new theme. Clicking again switches back. |
+| DM-2 | Toggle to dark, then reload | Dark mode is still applied, with no flash of the light theme. The saved value is `localStorage["rakudemo:theme"] === "\"dark\""`. |
+| DM-3 | With dark mode on, open Home, Stores, a store page, Shopping Trips, Favorites, Account, and an unknown URL | Header, page content, and footer stay dark on every page, including the "Page not found" page. |
+| DM-4 | Clear `localStorage` (or use a fresh profile) and load any page, including when the OS theme is dark | The site is light. Nothing is written until the member toggles the theme. |

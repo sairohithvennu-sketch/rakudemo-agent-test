@@ -20,7 +20,7 @@ export default function FavoriteButton({ storeId, storeName, className = "", wit
       aria-label={favorite ? `Remove ${storeName} from favorites` : `Add ${storeName} to favorites`}
       data-testid={`favorite-toggle-${storeId}`}
       onClick={() => toggle(storeId)}
-      className={`inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-2.5 py-2 text-sm font-medium text-slate-600 shadow-sm transition hover:border-raku-500 hover:text-raku-600 ${className}`}
+      className={`inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-2.5 py-2 text-sm font-medium text-slate-600 shadow-sm transition hover:border-raku-500 hover:text-raku-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:border-rose-400 dark:hover:text-rose-300 ${className}`}
     >
       <svg
         viewBox="0 0 24 24"

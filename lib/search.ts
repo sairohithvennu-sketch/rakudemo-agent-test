@@ -2,7 +2,7 @@ import type { Category, Store } from "@/data/stores";
 
 const SEARCH_TERMS: Record<string, string[]> = {
   nike: ["nike", "sneakers", "running", "athletic"],
-  adidas: ["adidas", "nike", "sneakers", "athletic", "originals"],
+  adidas: ["adidas", "sneakers", "athletic", "originals"],
   target: ["target", "groceries", "essentials", "home"],
   walmart: ["walmart", "groceries", "toys", "electronics"],
   "best-buy": ["best buy", "bestbuy", "laptops", "tv", "gaming", "appliances"],

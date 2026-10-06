@@ -5,9 +5,11 @@ import type { Store } from "@/data/stores";
 import { createActivation, isActivationActive, type Activation, type ActivationResult } from "@/lib/activation";
 import { toggleFavorite } from "@/lib/favorites";
 import { createLocalStore } from "@/lib/local-store";
+import { applyTheme, DEFAULT_THEME, isTheme, THEME_KEY, type Theme } from "@/lib/theme";
 
 export const FAVORITES_KEY = "rakudemo:favorites";
 export const ACTIVATIONS_KEY = "rakudemo:activations";
+export { THEME_KEY };
 
 const EMPTY_FAVORITES: string[] = [];
 const EMPTY_ACTIVATIONS: Record<string, Activation> = {};
@@ -17,6 +19,31 @@ const activationsStore = createLocalStore<Record<string, Activation>>(
   ACTIVATIONS_KEY,
   EMPTY_ACTIVATIONS,
 );
+const themeStore = createLocalStore<unknown>(THEME_KEY, DEFAULT_THEME);
+
+export function readTheme(): Theme {
+  const value = themeStore.read();
+  return isTheme(value) ? value : DEFAULT_THEME;
+}
+
+function getThemeServerSnapshot(): Theme {
+  return DEFAULT_THEME;
+}
+
+export function useTheme() {
+  const theme = useSyncExternalStore(themeStore.subscribe, readTheme, getThemeServerSnapshot);
+
+  const setTheme = useCallback((next: Theme) => {
+    themeStore.write(next);
+    applyTheme(next);
+  }, []);
+
+  const toggleTheme = useCallback(() => {
+    setTheme(readTheme() === "dark" ? "light" : "dark");
+  }, [setTheme]);
+
+  return { theme, setTheme, toggleTheme };
+}
 
 export function useFavorites() {
   const favorites = useSyncExternalStore(
