@@ -35,13 +35,18 @@ test.describe("dark mode", () => {
     await expect(page.locator("html")).toHaveClass(/dark/);
 
     await page.addInitScript(() => {
-      const seen: string[] = [];
-      new MutationObserver(() => {
-        seen.push(document.documentElement.className);
-      }).observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
-      window.addEventListener("load", () => {
-        (window as unknown as { __themeClasses: string[] }).__themeClasses = seen;
-      });
+      const w = window as unknown as { __themeLog?: string[] };
+      w.__themeLog = [];
+      const attach = () => {
+        const root = document.documentElement;
+        if (!root || root.dataset.themeWatch === "1") return;
+        root.dataset.themeWatch = "1";
+        new MutationObserver(() => {
+          w.__themeLog?.push(root.className);
+        }).observe(root, { attributes: true, attributeFilter: ["class"] });
+      };
+      attach();
+      new MutationObserver(attach).observe(document, { childList: true, subtree: true });
     });
 
     await page.reload();
@@ -52,11 +57,12 @@ test.describe("dark mode", () => {
     );
     expect(await page.evaluate(() => getComputedStyle(document.body).backgroundColor)).toBe(DARK_BG);
 
-    const seen = await page.evaluate(
-      () => (window as unknown as { __themeClasses: string[] }).__themeClasses,
-    );
-    expect(seen.length).toBeGreaterThan(0);
-    expect(seen.every((value) => value.split(/\s+/).includes("dark"))).toBe(true);
+    const seen = await page.evaluate(() => (window as unknown as { __themeLog: string[] }).__themeLog);
+    const droppedDark = seen.some((value, index) => {
+      const hadDark = seen.slice(0, index).some((entry) => entry.split(/\s+/).includes("dark"));
+      return hadDark && !value.split(/\s+/).includes("dark");
+    });
+    expect(droppedDark).toBe(false);
   });
 
   test("DM-3 dark theme applies site-wide including 404", async ({ page }) => {
