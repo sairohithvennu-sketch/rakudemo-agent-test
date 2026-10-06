@@ -16,7 +16,7 @@ export type ActivationResult =
   | { ok: false; reason: "missing-tracking-link" };
 
 const TRACKING_LINKS: Record<string, string> = {
-  "nike-us": "https://track.rakudemo.example/go/nike",
+  nike: "https://track.rakudemo.example/go/nike",
   adidas: "https://track.rakudemo.example/go/adidas",
   target: "https://track.rakudemo.example/go/target",
   walmart: "https://track.rakudemo.example/go/walmart",
